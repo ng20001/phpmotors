@@ -1,13 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 html {
-    -webkit-text-size-adjust: 100%; 
-    -ms-text-size-adjust: 100%;
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
 }
 
 * { 
-    -moz-box-sizing: border-box; 
-    -webkit-box-sizing: border-box; 
     box-sizing: border-box; 
 }
 
@@ -77,6 +75,7 @@ nav ul a:hover {
 /*----------Active Nav---------*/
 .active a {
     color:#3a3a3a;
+    font-weight: bold;
     background-color: #4c96d7;
     padding: 25px 5px;
 }
