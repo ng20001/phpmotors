@@ -45,6 +45,6 @@ switch ($action) {
     
     default:
         $pageTitle = 'Home';
-        include '../view/home.php';
+        header('Location: ../index.php');
         break;
 }

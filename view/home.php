@@ -1,7 +1,5 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/module/header.php'; ?>
 
-<?php // include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/module/nav.php'; ?>
-
 <nav>
     <?php echo $navList; ?>
 </nav>
