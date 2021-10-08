@@ -1,11 +1,10 @@
 <?php
-// MAIN CONTROLLER (ROOT)
-// The very first file a client lands on
+// Accounts controller (ROOT/accounts)
 
 // Get the database connection file
-require_once 'library/connections.php';
+require_once '../library/connections.php';
 // Get the PHP Motors model for use as needed
-require_once 'model/main-model.php';
+require_once '../model/main-model.php';
 
 // Get the array of classifications
 $classifications = getClassifications();
@@ -34,10 +33,18 @@ if ($action == NULL) {
 }
 
 switch ($action) {
-    // case 'something':
-    //     break;
+    case 'login':
+        $pageTitle = 'Account Login';
+        include '../view/login.php';
+        break;
 
+    case 'register':
+        $pageTitle = 'Account Registration';
+        include '../view/registration.php';
+        break;
+    
     default:
         $pageTitle = 'Home';
-        include 'view/home.php';
+        include '../view/home.php';
+        break;
 }

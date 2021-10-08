@@ -1,5 +1,4 @@
 
-            </main>
             <footer>
                 <div class="footer-wrap">
                     <hr>
