@@ -6,15 +6,17 @@
 <main>
 
     <div class="main-wrap">
+
         <h1>Add Car Classification</h1>
+
         <?php
         if (isset($message)) {
             echo $message;
         }
         ?>
-        
+
         <form method="post" action="/phpmotors/vehicles/index.php">
-            <label for="classificationName"></label>
+            <label for="classificationName">Add car classification</label><br>
             <input name="classificationName" id="classificationName" type="text"><br>
             <input type="submit" name="submit" class="account-button" value="Add Classification">
             <input type="hidden" name="action" value="add-classification">
