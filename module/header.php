@@ -2,7 +2,15 @@
 <html lang="en-US">
 
 <head>
-    <title><?php echo $pageTitle . ' | PHP Motors' ?></title>
+
+    <title>
+        <?php
+        if (isset($pageTitle)) {
+            echo $pageTitle . ' | PHP Motors';
+        }
+        ?>
+    </title>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" media="screen" href="/phpmotors/css/style.css">

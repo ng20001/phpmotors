@@ -1,13 +1,13 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/module/header.php'; ?>
 
-<?php // include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/module/nav.php'; ?>
-
 <nav>
     <?php echo $navList; ?>
 </nav>
 <main>
 
-    <h1>Content title here</h1>
+    <div class="main-wrap">
+        <h1>Content here</h1>
+    </div>
 
 </main>
 
