@@ -28,7 +28,7 @@ foreach ($classifications as $classification) {
 $selectList .= '</select>';
 
 // var_dump: a PHP function that displays variable/array/object info
-// var_dump($selectList);
+// var_dump($classifications);
 // 	exit;
 
 
