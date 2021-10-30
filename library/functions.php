@@ -16,6 +16,7 @@ function checkPassword($clientPassword)
     return preg_match($pattern, $clientPassword);
 }
 
+// limit the number of any character within the range of 1-30
 function checkClassificationName($classificationName)
 {
     $pattern = '/^.{1,30}$/';
@@ -23,18 +24,21 @@ function checkClassificationName($classificationName)
     return preg_match($pattern, $classificationName);
 }
 
+// make sure the default option (-Choose Car Classification-) is not selected
 function checkClassificationId($classificationId)
 {
     $pattern = '/^\d{1,}$/';
     return preg_match($pattern, $classificationId);
 }
 
+// make sure user input is not a decimal number
 function checkInt($num)
 {
     $pattern = '/^[^.]+$/';
     return preg_match($pattern, $num);
 }
 
+// create nav bar
 function buildNavList($classifications)
 {
     $navList = '<ul>';
