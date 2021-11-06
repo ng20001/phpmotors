@@ -5,7 +5,9 @@
 
     <title>
         <?php
-        if (isset($pageTitle)) {
+        if (isset($_SESSION['pageTitle'])) {
+            echo $_SESSION['pageTitle'] . ' | PHP Motors';
+        } else if (isset($pageTitle)) {
             echo $pageTitle . ' | PHP Motors';
         }
         ?>
@@ -20,5 +22,10 @@
     <div class="header-wrap">
         <header>
             <a href="/phpmotors/"><img src="/phpmotors/images/site/logo.png" alt="PHPMotors logo"></a>
-            <span id="account-url"><a href="/phpmotors/accounts/?action=login">My Account</a></span>
+            <?php
+            if (isset($_SESSION['loggedin'])) {
+                echo "<span id='account-url'>Welcome, <a href='/phpmotors/accounts/?action=admin'>" . $_SESSION['clientData']['clientFirstname'] . "</a> | <a href='/phpmotors/accounts/?action=Logout'>Logout</a></span>";
+            } else {
+                echo "<span id='account-url'><a href='/phpmotors/accounts/?action=login'>My Account</a></span>";
+            } ?>
         </header>

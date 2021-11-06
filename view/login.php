@@ -13,7 +13,7 @@
         }
         ?>
 
-        <form method="post" action="/phpmotors/accounts/index.php">
+        <form method="post" action="/phpmotors/accounts/">
             <label for="clientEmail">Email</label><br>
             <input name="clientEmail" id="clientEmail" type="email" <?php if(isset($clientEmail)){echo "value='$clientEmail'";}  ?> required placeholder="Enter a valid email address"><br><br>
             <label for="clientPassword">Password (Passwords must be at least 8 characters and contain at least 1 number, 1 captital letter and 1 special character)</label><br>

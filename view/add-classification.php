@@ -1,5 +1,12 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/module/header.php'; ?>
 
+<?php
+if (!$_SESSION['loggedin']) {
+    header('Location: ../index.php');
+    exit;  
+}
+?>
+
 <nav>
     <?php echo $navList; ?>
 </nav>

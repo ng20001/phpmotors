@@ -1,6 +1,10 @@
 <?php
 // Vehicles controller (ROOT/vehicles)
 
+// Create or access a Session
+// If there is no session, one is created. Otherwise, the existing session is used.
+session_start();
+
 // Get the database connection file
 require_once '../library/connections.php';
 // Get the PHP Motors model for use as needed
@@ -21,6 +25,11 @@ $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     // If no input from forms, gather input from links (E.g. .../?action=something)
     $action = filter_input(INPUT_GET, 'action');
+}
+
+// Check if the 'firstname' cookie exists, get its value
+if (isset($_COOKIE['firstname'])) {
+    $cookieFirstname = filter_input(INPUT_COOKIE, 'firstname', FILTER_SANITIZE_STRING);
 }
 
 switch ($action) {
@@ -54,7 +63,7 @@ switch ($action) {
 
         // Check and report the result
         if ($regOutcome === 1) {
-            $pageTitle = 'Vehicle Management';
+            // $pageTitle = 'Vehicle Management';
             header('Location: index.php');
             exit;
         } else {

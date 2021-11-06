@@ -1,4 +1,10 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/module/header.php'; ?>
+<?php
+    if (!$_SESSION['loggedin']) {
+        header('Location: ../index.php');
+        exit;  
+    }
+?>
 <?php 
     // Build a dynamic select dropdown list using the $classifications array
     $selectList = '<select name="classificationId" id="classificationId" required>';
