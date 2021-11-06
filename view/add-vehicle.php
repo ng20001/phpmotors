@@ -1,6 +1,6 @@
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/module/header.php'; ?>
 <?php
-    if (!$_SESSION['loggedin']) {
+    if (!$_SESSION['loggedin'] || $_SESSION['clientData']['clientLevel'] != 3) {
         header('Location: ../index.php');
         exit;  
     }
