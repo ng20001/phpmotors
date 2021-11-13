@@ -13,13 +13,23 @@ if (!$_SESSION['loggedin']) {
 <main>
 
     <div class="main-wrap">
-        <h2><?php echo $_SESSION['clientData']['clientFirstname'] . ' ' . $_SESSION['clientData']['clientLastname']; ?></h2>
+        <h1><?php echo $_SESSION['clientData']['clientFirstname'] . ' ' . $_SESSION['clientData']['clientLastname']; ?></h1>
+        <?php 
+        if (isset($_SESSION['message'])){
+            echo $_SESSION['message'];
+        } else if (isset($message)){
+            echo $message;
+        }
+         ?>
         <p>You are logged in.</p>
         <ul>
             <li>First name: <?php echo $_SESSION['clientData']['clientFirstname']; ?></li>
             <li>Last name: <?php echo $_SESSION['clientData']['clientLastname']; ?></li>
             <li>Email: <?php echo $_SESSION['clientData']['clientEmail']; ?></li>
         </ul>
+        <h2>Account Management</h2>
+        <p>Use this link to update account information.</p>
+        <span><a href="/phpmotors/accounts/?action=update">Update Account Information</a></span>
         <?php 
             if ($_SESSION['clientData']['clientLevel'] == 3){
                 echo "<h2>Inventory Management</h2>";
@@ -27,6 +37,7 @@ if (!$_SESSION['loggedin']) {
                 echo "<span><a href='/phpmotors/vehicles/'>Vehicle Management</a></span>";
             }
         ?>
+        <?php unset($_SESSION['message']); ?>
     </div>
 
 </main>

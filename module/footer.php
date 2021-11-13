@@ -9,5 +9,11 @@
                 
             </footer>
         </div>
+        <?php
+        // echo $_SERVER['REQUEST_URI'];
+        if ($_SERVER['REQUEST_URI'] == "/phpmotors/vehicles/"){
+            echo "<script src='../js/inventory.js'></script>";
+        }
+        ?>
     </body>
 </html>

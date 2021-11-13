@@ -2,12 +2,32 @@
 <html lang="en-US">
 
 <head>
-
+    <?php 
+    // echo $_SERVER['REQUEST_URI'];
+    // echo "<br>";
+    // echo preg_match('/mod/', $_SERVER['REQUEST_URI']);
+    ?>
     <title>
         <?php
+
         if (isset($_SESSION['pageTitle'])) {
-            echo $_SESSION['pageTitle'] . ' | PHP Motors';
-        } else if (isset($pageTitle)) {
+            $pageTitle = $_SESSION['pageTitle'];
+        }
+        if (preg_match('/mod/', $_SERVER['REQUEST_URI'])) {
+            if (isset($invInfo['invMake']) && isset($invInfo['invModel'])) {
+                $pageTitle = "Modify $invInfo[invMake] $invInfo[invModel]";
+            } elseif (isset($invMake) && isset($invModel)) {
+                $pageTitle = "Modify $invMake $invModel";
+            }
+        } else if (preg_match('/delete/', $_SERVER['REQUEST_URI'])) {
+            if (isset($invInfo['invMake']) && isset($invInfo['invModel'])) {
+                $pageTitle = "Delete $invInfo[invMake] $invInfo[invModel]";
+            } elseif (isset($invMake) && isset($invModel)) {
+                $pageTitle = "Delete $invMake $invModel";
+            }
+        }
+
+        if (isset($pageTitle)) {
             echo $pageTitle . ' | PHP Motors';
         }
         ?>
