@@ -5,11 +5,13 @@ html {
     box-sizing: border-box;
 }
 
-* { 
-    box-sizing: border-box; 
+* {
+    box-sizing: border-box;
 }
 
-*, *:before, *:after{
+*,
+*:before,
+*:after {
     box-sizing: inherit;
 }
 
@@ -25,10 +27,9 @@ body {
     margin: 0 auto;
 }
 
-/* header img {
-    width: 100%;
-    clear: both;
-} */
+header img {
+    width: 150px;
+}
 
 
 header span {
@@ -55,11 +56,11 @@ header .logout {
     font-weight: bold;
 }
 
- 
+
 /*----------Nav---------*/
 nav {
     background-color: #3a3a3a;
-    
+
 }
 
 nav ul {
@@ -67,7 +68,7 @@ nav ul {
 }
 
 nav ul li {
-    list-style-type: none;
+    /* list-style-type: none; */
     display: inline;
     padding: 0 5px 0 5px;
 }
@@ -91,6 +92,11 @@ h1 {
 /*----------h2---------*/
 h2 {
     font-size: 20px;
+}
+
+hr {
+    width: 100%;
+    border: 1px black solid;
 }
 
 /*----------Own-today---------*/
@@ -161,12 +167,12 @@ h2 {
 
 .upgrades-grid figure img {
     width: 100%;
-    
+
 }
 
 /* MAIN */
 .main-wrap {
-    margin-left: 20px;
+    margin: 20px;
 }
 
 .account-button {
@@ -177,15 +183,76 @@ h2 {
 .footer-wrap {
     text-align: center;
     line-height: normal;
+    padding: 0 5%;
 }
 
 .footer-wrap p {
     font-size: 13px;
 }
 
+/* inv-display for thumbnails page*/
+#inv-display {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+#inv-display li {
+    margin: 1em;
+    border: 1px #ccc solid;
+    border-radius: 25px;
+    list-style-type: none;
+    flex: 1 1 auto;
+    padding: 10px;
+}
+
+#inv-display li img {
+    width: 100%;
+    /* max-height: 200px; */
+    border-radius: 25px 25px 0 0;
+    padding: 0;
+}
+
+#inv-details {
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    row-gap: 10px;
+}
+
+#inv-details img {
+    width: 100%;
+    box-shadow: 2px 2px 10px rgb(129, 129, 129);
+    border-radius: 10px;
+    border: 1px black solid;
+}
+
+#inv-details img:hover {
+    box-shadow: 6px 6px 6px rgb(129, 129, 129);
+}
+
+#inv-text {
+    border: 1px black solid;
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: #e7e7e7;
+    box-shadow: 2px 2px 10px rgb(129, 129, 129);
+}
+
+#inv-text:hover {
+    box-shadow: 6px 6px 6px rgb(129, 129, 129);
+}
+
+#inv-text h2 {
+    color: #004581;
+}
+
 @media only screen and (min-width: 600px) {
     body {
-        background-image: url("../images/site/checkerboard.jpg");
+        background-image: url("../images/site/small_check.jpg");
         background-repeat: repeat;
         margin: 6px;
     }
@@ -200,11 +267,12 @@ h2 {
     }
 
     header img {
-        width: 200px;
+        max-width: 200px;
     }
 
     .footer-wrap {
         line-height: 10px;
+        
     }
 
     .own-today-msg {
@@ -237,4 +305,44 @@ h2 {
         clear: both;
     }
 
-} 
+    /* For vehicle display in classification view (thumbnails)*/
+    #inv-display {
+        flex-flow: row wrap;
+        justify-content: flex-start;
+    }
+
+    #inv-display h2 {
+        font-size: 1rem;
+    }
+
+    #inv-display li {
+        max-width: 200px;
+        flex: 1 0 auto;
+        text-align: center;
+        /* height: 300px; */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #inv-display div {
+        width: 100%;
+    }
+
+    /* For each vehicle details */
+    #inv-details {
+        flex-flow: row wrap;
+        justify-content: space-around;
+    }
+
+    #inv-details img {
+        max-width: 55%;
+        object-fit: contain;
+        background-color:#e7e7e7;
+    }
+    
+    #inv-text {
+        max-width: 40%;
+        padding: 10px 10px;
+    }
+}

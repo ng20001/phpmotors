@@ -208,6 +208,29 @@ switch ($action) {
         }
         break;
 
+    case 'viewClassification':
+        $classificationName = filter_input(INPUT_GET, 'classificationName', FILTER_SANITIZE_STRING);
+        $vehicles = getVehiclesByClassification($classificationName); // returns 0 or arrays of vehicles
+        if (!count($vehicles)) {
+            $message = "<p class='notice'>Sorry, no $classificationName could be found.</p>";
+        } else {
+            $vehicleDisplay = buildVehiclesDisplay($vehicles);
+        }
+
+        $pageTitle = $classificationName . ' vehicles';
+        include '../view/classification.php';
+        break;
+
+    case 'viewVehicle':
+        $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_STRING);
+        // request DB
+        $vehicle = getInvItemInfo($invId);
+        // build html view, accessible from vehicle-detail.php
+        $vehicleDetails = buildVehicleInfo($vehicle);
+        $pageTitle = $vehicle['invMake'] . ' ' . $vehicle['invModel'] . ' details';
+        include '../view/vehicle-detail.php';
+        break;
+
     default:
         $pageTitle = 'Vehicle Management';
 
