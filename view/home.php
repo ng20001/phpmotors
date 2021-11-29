@@ -7,7 +7,7 @@
 
 <div class="own-today main-wrap">
     <h1>Welcome to PHP Motors!</h1>
-    <img id="car" src="/phpmotors/images/delorean.jpg" alt="car">
+    <img id="car" src="/phpmotors/images/vehicles/delorean.jpg" alt="car">
     <div class="own-today-msg">
         <h2>DMC Delorean</h2>
         <p>3 Cup holders</p>

@@ -14,6 +14,10 @@
         <?php if (isset($vehicleDetails)) {
             echo $vehicleDetails;
         } ?>
+        
+        <?php if (isset($thumbnailsDisplay)) {
+            echo $thumbnailsDisplay;
+        } ?>
     </div>
 
 </main>

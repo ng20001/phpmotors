@@ -35,6 +35,9 @@ if (!$_SESSION['loggedin']) {
                 echo "<h2>Inventory Management</h2>";
                 echo "<p>Use this link to manage the inventory.</p>";
                 echo "<span><a href='/phpmotors/vehicles/'>Vehicle Management</a></span>";
+                echo "<h2>Image Management</h2>";
+                echo "<p>Use this link to manage the images.</p>";
+                echo "<span><a href='/phpmotors/uploads/'>Image Management</a></span>";
             }
         ?>
         <?php unset($_SESSION['message']); ?>

@@ -65,6 +65,7 @@ nav {
 
 nav ul {
     padding: 20px;
+    width: 100%;
 }
 
 nav ul li {
@@ -214,7 +215,8 @@ hr {
     padding: 0;
 }
 
-#inv-details {
+/* inv-details for detail page*/
+#inv-details, #inv-img-text {
     width: 100%;
     display: flex;
     flex-flow: column wrap;
@@ -233,7 +235,7 @@ hr {
     box-shadow: 6px 6px 6px rgb(129, 129, 129);
 }
 
-#inv-text {
+#inv-text, #inv-thumbnails {
     border: 1px black solid;
     border-radius: 10px;
     width: 100%;
@@ -242,12 +244,29 @@ hr {
     box-shadow: 2px 2px 10px rgb(129, 129, 129);
 }
 
-#inv-text:hover {
+#inv-text:hover, #inv-thumbnails:hover {
     box-shadow: 6px 6px 6px rgb(129, 129, 129);
 }
 
-#inv-text h2 {
+#inv-text, #inv-thumbnails h2 {
     color: #004581;
+}
+
+#inv-thumbnails ul {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 0;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#inv-thumbnails li {
+    list-style-type: none;
+    max-width: 30%;
+}
+
+#inv-thumbnails img {
+    width: 100%;
 }
 
 @media only screen and (min-width: 600px) {
@@ -331,18 +350,51 @@ hr {
 
     /* For each vehicle details */
     #inv-details {
-        flex-flow: row wrap;
+        flex-flow: row-reverse nowrap;
         justify-content: space-around;
+        gap: 10px;
     }
 
-    #inv-details img {
-        max-width: 55%;
+    #inv-img-text {
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        gap: 10px;
+    }
+
+    #inv-details #inv-img-text img {
+        max-width: 40%;
         object-fit: contain;
         background-color:#e7e7e7;
     }
     
     #inv-text {
-        max-width: 40%;
+        /* max-width: 40%; */
         padding: 10px 10px;
+    }
+
+    #inv-thumbnails {
+        max-width: 130px;
+        width: 17%;
+        padding: 10px;
+    }
+
+    #inv-thumbnails h2 {
+        display: none;
+    }
+
+    #inv-thumbnails ul {
+        flex-flow: column wrap;
+        gap: 10px;
+    }
+
+    #inv-thumbnails li {
+        width: 100%;
+        max-width: none;
+    }
+
+    #inv-thumbnails img:hover {
+        width: 300%;
+        height: 300%;
+        box-shadow: none;
     }
 }

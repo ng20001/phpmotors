@@ -11,6 +11,8 @@ require_once '../library/connections.php';
 require_once '../model/main-model.php';
 // Get the vehicles model
 require_once '../model/vehicles-model.php';
+// Get the vehicles model
+require_once '../model/uploads-model.php';
 // Get the functions library
 require_once '../library/functions.php';
 
@@ -226,6 +228,8 @@ switch ($action) {
         // request DB
         $vehicle = getInvItemInfo($invId);
         // build html view, accessible from vehicle-detail.php
+        $thumbnails = getTnImg($invId);
+        $thumbnailsDisplay = buildVehicleThumbnailsDisplay($thumbnails);
         $vehicleDetails = buildVehicleInfo($vehicle);
         $pageTitle = $vehicle['invMake'] . ' ' . $vehicle['invModel'] . ' details';
         include '../view/vehicle-detail.php';
