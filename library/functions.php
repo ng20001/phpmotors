@@ -98,7 +98,7 @@ function buildVehicleInfo($vehicle)
     return $dv;
 }
 
-function buildVehicleThumbnailsDisplay($thumbnails){
+function buildThumbnailsDisplay($thumbnails){
     $dv = '<div id="inv-thumbnails">';
     $dv .= '<h2>Vehicle Thumbnails</h2>';
     $dv .= '<ul>';

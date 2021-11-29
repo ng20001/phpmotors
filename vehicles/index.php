@@ -225,12 +225,15 @@ switch ($action) {
 
     case 'viewVehicle':
         $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_STRING);
+        
         // request DB
         $vehicle = getInvItemInfo($invId);
-        // build html view, accessible from vehicle-detail.php
         $thumbnails = getTnImg($invId);
-        $thumbnailsDisplay = buildVehicleThumbnailsDisplay($thumbnails);
+
+        // build html view
         $vehicleDetails = buildVehicleInfo($vehicle);
+        $thumbnailsDisplay = buildThumbnailsDisplay($thumbnails);
+
         $pageTitle = $vehicle['invMake'] . ' ' . $vehicle['invModel'] . ' details';
         include '../view/vehicle-detail.php';
         break;

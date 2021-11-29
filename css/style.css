@@ -191,6 +191,10 @@ hr {
     font-size: 13px;
 }
 
+#image-display {
+    list-style-type: none;
+}
+
 /* inv-display for thumbnails page*/
 #inv-display {
     margin: 0;

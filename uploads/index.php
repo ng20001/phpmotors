@@ -29,6 +29,8 @@ if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 }
 
+$pageTitle = "Image Management";
+
 switch ($action) {
     case 'upload':
         // Store the incoming vehicle id and primary picture indicator
@@ -116,7 +118,7 @@ switch ($action) {
         $vehicles = getVehicles();
         // Build a select list of vehicle information for the view
         $prodSelect = buildVehiclesSelect($vehicles);
-
+        
         include '../view/image-admin.php';
         exit;
         break;
