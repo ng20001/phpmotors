@@ -98,7 +98,8 @@ function buildVehicleInfo($vehicle)
     return $dv;
 }
 
-function buildThumbnailsDisplay($thumbnails){
+function buildThumbnailsDisplay($thumbnails)
+{
     $dv = '<div id="inv-thumbnails">';
     $dv .= '<h2>Vehicle Thumbnails</h2>';
     $dv .= '<ul>';
@@ -112,6 +113,37 @@ function buildThumbnailsDisplay($thumbnails){
     $dv .= '</div>';
     return $dv;
 }
+
+/* * ********************************
+*  Functions for working with reviews
+* ********************************* */
+
+function buildReviewLogsDisplay($reviewsInfo)
+{
+    $dv = '<ul>';
+    foreach ($reviewsInfo as $review) {
+        $dv .= '<li>';
+        $dv .= "$review[invMake] $review[invModel] (Reviewed on $review[reviewDate]): ";
+        $dv .= "<a href='/phpmotors/reviews/?action=editView&reviewId=$review[reviewId]'>Edit</a> | <a href='/phpmotors/reviews/?action=delView&reviewId=$review[reviewId]'>Delete</a>";
+        $dv .= '</li>';
+    }
+    $dv .= '</ul>';
+    return $dv;
+}
+
+function buildReviewsDisplay($reviewsInfo)
+{
+    $dv = "<div class='reviewWrap'>";
+    foreach ($reviewsInfo as $review) {
+        $dv .= "<div>";
+        $dv .= "<p class='reviewInfo'>" . substr($review['clientFirstname'], 0, 1) . $review['clientLastname'] . " wrote on $review[reviewDate]</p><br>";
+        $dv .= "<p class='reviewText'>" . $review['reviewText'] . "</p>";
+        $dv .= '</div>';
+    }
+    $dv .= '</div>';
+    return $dv;
+}
+
 
 /* * ********************************
 *  Functions for working with images

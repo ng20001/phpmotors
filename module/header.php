@@ -2,11 +2,6 @@
 <html lang="en-US">
 
 <head>
-    <?php 
-    // echo $_SERVER['REQUEST_URI'];
-    // echo "<br>";
-    // echo preg_match('/mod/', $_SERVER['REQUEST_URI']);
-    ?>
     <title>
         <?php
 

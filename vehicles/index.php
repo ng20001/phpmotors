@@ -11,8 +11,10 @@ require_once '../library/connections.php';
 require_once '../model/main-model.php';
 // Get the vehicles model
 require_once '../model/vehicles-model.php';
-// Get the vehicles model
+// Get the uploads model
 require_once '../model/uploads-model.php';
+// Get the reviews model
+require_once '../model/reviews-model.php';
 // Get the functions library
 require_once '../library/functions.php';
 
@@ -225,7 +227,7 @@ switch ($action) {
 
     case 'viewVehicle':
         $invId = filter_input(INPUT_GET, 'invId', FILTER_SANITIZE_STRING);
-        
+
         // request DB
         $vehicle = getInvItemInfo($invId);
         $thumbnails = getTnImg($invId);
@@ -233,6 +235,20 @@ switch ($action) {
         // build html view
         $vehicleDetails = buildVehicleInfo($vehicle);
         $thumbnailsDisplay = buildThumbnailsDisplay($thumbnails);
+
+        $reviewsInfo = getReviewsByInv($invId);
+
+        if (count($reviewsInfo)) {
+            $reviewsDisplay = buildReviewsDisplay($reviewsInfo);
+            // var_dump($reviewsDisplay);
+            // exit;
+        } else {
+            if (isset($_SESSION['loggedin'])) {
+                $reviewMessage = "Be the first to write a review.";
+            } else {
+                $reviewMessage = "No review has been made to this vehicle.";
+            }
+        }
 
         $pageTitle = $vehicle['invMake'] . ' ' . $vehicle['invModel'] . ' details';
         include '../view/vehicle-detail.php';

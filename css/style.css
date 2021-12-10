@@ -273,6 +273,29 @@ hr {
     width: 100%;
 }
 
+/* review */
+.reviewWrap div {
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px black dotted;
+    background-color: rgb(251, 250, 146);
+}
+
+.reviewInfo {
+    margin: 0;
+}
+
+.reviewText {
+    margin: 0;
+    padding: 10px;
+    border: 1px black solid;
+    background-color: white;
+}
+
+.delete-message {
+    color: red;
+}
+
 @media only screen and (min-width: 600px) {
     body {
         background-image: url("../images/site/small_check.jpg");

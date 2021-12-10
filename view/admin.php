@@ -3,7 +3,7 @@
 <?php
 if (!$_SESSION['loggedin']) {
     header('Location: ../index.php');
-    exit;  
+    exit;
 }
 ?>
 
@@ -14,13 +14,13 @@ if (!$_SESSION['loggedin']) {
 
     <div class="main-wrap">
         <h1><?php echo $_SESSION['clientData']['clientFirstname'] . ' ' . $_SESSION['clientData']['clientLastname']; ?></h1>
-        <?php 
-        if (isset($_SESSION['message'])){
+        <?php
+        if (isset($_SESSION['message'])) {
             echo $_SESSION['message'];
-        } else if (isset($message)){
+        } else if (isset($message)) {
             echo $message;
         }
-         ?>
+        ?>
         <p>You are logged in.</p>
         <ul>
             <li>First name: <?php echo $_SESSION['clientData']['clientFirstname']; ?></li>
@@ -30,19 +30,26 @@ if (!$_SESSION['loggedin']) {
         <h2>Account Management</h2>
         <p>Use this link to update account information.</p>
         <span><a href="/phpmotors/accounts/?action=update">Update Account Information</a></span>
-        <?php 
-            if ($_SESSION['clientData']['clientLevel'] == 3){
-                echo "<h2>Inventory Management</h2>";
-                echo "<p>Use this link to manage the inventory.</p>";
-                echo "<span><a href='/phpmotors/vehicles/'>Vehicle Management</a></span>";
-                echo "<h2>Image Management</h2>";
-                echo "<p>Use this link to manage the images.</p>";
-                echo "<span><a href='/phpmotors/uploads/'>Image Management</a></span>";
-            }
+        <?php
+        if ($_SESSION['clientData']['clientLevel'] == 3) {
+            echo "<h2>Inventory Management</h2>";
+            echo "<p>Use this link to manage the inventory.</p>";
+            echo "<span><a href='/phpmotors/vehicles/'>Vehicle Management</a></span>";
+            echo "<h2>Image Management</h2>";
+            echo "<p>Use this link to manage the images.</p>";
+            echo "<span><a href='/phpmotors/uploads/'>Image Management</a></span>";
+        }
+        echo "<h2>Manage Your Product Reviews</h2>";
+        if (isset($reviewLogsDisplay)) {
+            echo $reviewLogsDisplay;
+        } else {
+            echo "You have not yet reviewed on any vehicles yet.";
+        }
         ?>
-        <?php unset($_SESSION['message']); ?>
+
     </div>
 
 </main>
 
 <?php include $_SERVER['DOCUMENT_ROOT'] . '/phpmotors/module/footer.php'; ?>
+<?php unset($_SESSION['message']); ?>

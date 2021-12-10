@@ -11,6 +11,8 @@ require_once '../library/connections.php';
 require_once '../model/main-model.php';
 // Get the accounts model
 require_once '../model/accounts-model.php';
+// Get the reviews model
+require_once '../model/reviews-model.php';
 // Get the functions library
 require_once '../library/functions.php';
 
@@ -103,7 +105,7 @@ switch ($action) {
 
         // Send them to the admin view
         $pageTitle = 'Account Information';
-        include '../view/admin.php';
+        header ('location: ./?action=admin');
         exit;
 
         break;
@@ -115,6 +117,16 @@ switch ($action) {
         break;
 
     case 'admin':
+        if (isset($_SESSION['clientData'])) {
+            $clientId = $_SESSION['clientData']['clientId'];
+            // TODO: get reviews logs and pass it to admin.php
+            $reviewsInfo = getReviewsInfoByClient($clientId);
+            // var_dump($reviewsInfo);
+            // exit;
+            if (count($reviewsInfo)) {
+                $reviewLogsDisplay = buildReviewLogsDisplay($reviewsInfo);
+            }
+        }
         $pageTitle = 'Account Information';
         include '../view/admin.php';
         break;
