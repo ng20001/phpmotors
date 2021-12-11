@@ -114,7 +114,7 @@ switch ($action) {
 
     default:
         if (isset($_SESSION['loggedin'])) {
-            include '../view/admin.php';
+            header('location: /phpmotors/accounts/?action=admin');
         } else {
             header('location: /phpmotors/');
         }
