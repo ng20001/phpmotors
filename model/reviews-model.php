@@ -1,23 +1,24 @@
 <?php
 // Reviews model
 
-function addReview($reviewText, $invId, $clientId){
-        $db = phpmotorsConnect();
-        $sql = 'INSERT INTO reviews (reviewText, invId, clientId) VALUES (:reviewText, :invId, :clientId)';
-        $stmt = $db->prepare($sql);
-        $stmt->bindValue(':reviewText', $reviewText, PDO::PARAM_STR);
-        $stmt->bindValue(':invId', $invId, PDO::PARAM_STR);
-        $stmt->bindValue(':clientId', $clientId, PDO::PARAM_STR);
-        $stmt->execute();
-        $rowsChanged = $stmt->rowCount();
-        $stmt->closeCursor();
-        return $rowsChanged;
+function addReview($reviewText, $invId, $clientId)
+{
+    $db = phpmotorsConnect();
+    $sql = 'INSERT INTO reviews (reviewText, invId, clientId) VALUES (:reviewText, :invId, :clientId)';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':reviewText', $reviewText, PDO::PARAM_STR);
+    $stmt->bindValue(':invId', $invId, PDO::PARAM_STR);
+    $stmt->bindValue(':clientId', $clientId, PDO::PARAM_STR);
+    $stmt->execute();
+    $rowsChanged = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $rowsChanged;
 }
 
-function getReviewsByInv($invId){ //get all existing reviews
+function getReviewsByInv($invId)
+{ //get all existing reviews
     // get reviews.reviewText, reviews.reviewDate, clients.clientFirstname, clients.clientLastname
     $db = phpmotorsConnect();
-    // $sql = 'SELECT * FROM inventory JOIN images ON inventory.invId = images.invId WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName) AND images.imgPath LIKE "%-tn.%" AND imgPrimary = "1"';
     $sql = 'SELECT reviews.reviewText, reviews.reviewDate, clients.clientFirstname, clients.clientLastname FROM reviews JOIN clients ON reviews.clientId = clients.clientId WHERE invId = :invId';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':invId', $invId, PDO::PARAM_STR);
@@ -27,10 +28,10 @@ function getReviewsByInv($invId){ //get all existing reviews
     return $reviewsInfo;
 }
 
-function getReviewsInfoByClient($clientId){
+function getReviewsInfoByClient($clientId)
+{
     // get inventory.invMake, inventory.invModel, reviews.reviewDate, reviews.reviewId
     $db = phpmotorsConnect();
-    // $sql = 'SELECT * FROM inventory JOIN images ON inventory.invId = images.invId WHERE classificationId IN (SELECT classificationId FROM carclassification WHERE classificationName = :classificationName) AND images.imgPath LIKE "%-tn.%" AND imgPrimary = "1"';
     $sql = 'SELECT inventory.invMake, inventory.invModel, reviews.reviewDate, reviews.reviewId FROM reviews JOIN inventory ON reviews.invId = inventory.invId WHERE clientId = :clientId';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':clientId', $clientId, PDO::PARAM_STR);
@@ -40,7 +41,8 @@ function getReviewsInfoByClient($clientId){
     return $reviewsInfo;
 }
 
-function getReview($reviewId){
+function getReview($reviewId)
+{
     $db = phpmotorsConnect();
     $sql = 'SELECT reviews.reviewDate, reviews.reviewText, inventory.invMake, inventory.invModel FROM reviews JOIN inventory ON reviews.invId = inventory.invId WHERE reviews.reviewId = :reviewId';
     $stmt = $db->prepare($sql);
@@ -51,7 +53,8 @@ function getReview($reviewId){
     return $review;
 }
 
-function updateReview($reviewId, $reviewText){
+function updateReview($reviewId, $reviewText)
+{
     $db = phpmotorsConnect();
     $sql = 'UPDATE reviews SET reviewText = :reviewText WHERE reviewId = :reviewId';
     $stmt = $db->prepare($sql);
@@ -64,7 +67,8 @@ function updateReview($reviewId, $reviewText){
     exit;
 }
 
-function deleteReview($reviewId){
+function deleteReview($reviewId)
+{
     $db = phpmotorsConnect();
     $sql = 'DELETE FROM reviews WHERE reviewId = :reviewId';
     $stmt = $db->prepare($sql);

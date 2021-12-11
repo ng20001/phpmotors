@@ -121,8 +121,6 @@ switch ($action) {
             $clientId = $_SESSION['clientData']['clientId'];
             // TODO: get reviews logs and pass it to admin.php
             $reviewsInfo = getReviewsInfoByClient($clientId);
-            // var_dump($reviewsInfo);
-            // exit;
             if (count($reviewsInfo)) {
                 $reviewLogsDisplay = buildReviewLogsDisplay($reviewsInfo);
             }
