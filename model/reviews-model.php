@@ -64,7 +64,6 @@ function updateReview($reviewId, $reviewText)
     $rowsChanged = $stmt->rowCount();
     $stmt->closeCursor();
     return $rowsChanged;
-    exit;
 }
 
 function deleteReview($reviewId)
